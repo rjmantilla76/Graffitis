@@ -6,8 +6,17 @@ footer {
   margin: 50px;
 }
 
-#footerText {
+#footer {
   padding: 10px;
+  color: #333;
+}
+
+#titulo {
+  color: #fff;
+}
+
+#textoSobreNosotros {
+  color: #333;
 }
 
 #login-buttons a, .accounts-dialog a {
@@ -50,6 +59,20 @@ footer {
     background-color: #f4511e;
 }
 
+.jumbotron {
+    background-color: #f4511e;
+    color: #fff;
+    padding: 100px 25px;
+}
+
+.container-fluid {
+    padding: 60px 50px;
+}
+
 .jumbotron h1, p {
   color: #fff;
+}
+
+.bg-grey {
+    background-color: #f6f6f6;
 }

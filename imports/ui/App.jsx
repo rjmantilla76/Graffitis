@@ -106,7 +106,7 @@ class App extends Component {
       </nav>
 
       {!this.props.currentUser && <div className="jumbotron text-center">
-        <h1>GraffitisCity</h1>
+        <h1 id="titulo">GraffitisCity</h1>
         <p>Búscalos por todo Bogotá</p>
       </div> }
 
@@ -134,8 +134,14 @@ class App extends Component {
       </ul>
       <br/>
       <br/>
-      <Mapa onMarker={ (latitude,longitude) => this.changeLatLng(latitude,longitude) } ></Mapa>
-      {!this.props.currentUser && <h2>SOBRE NOSOTROS</h2> }
+      <div className="container-fluid bg-grey">
+        <Mapa onMarker={ (latitude,longitude) => this.changeLatLng(latitude,longitude) } ></Mapa>
+      </div>
+      <br></br>
+      {!this.props.currentUser && <div id="sobreNosotros" className="container-fluid"><h2>SOBRE NOSOTROS</h2><br></br>
+      <p id="textoSobreNosotros">GraffitisCity es un proyecto que busca que las personas conozcan graffitis artísticos en todo Bogotá.</p></div>}
+      {!this.props.currentUser && <div id="contactenos" className="container-fluid bg-grey"><h2>CONTACTENOS</h2><br></br>
+      <p id="textoSobreNosotros">Somos 2 estudiantes de Ingeniería de Sistemas y Computación. Escríbenos a email</p></div>}
     </div>
     );
   }
