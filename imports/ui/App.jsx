@@ -93,12 +93,13 @@ class App extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a id="logoPS" className="navbar-brand" href="#miPagina">GraffitisCity</a>
+            <a id="logoGC" className="navbar-brand" href="#miPagina">GraffitisCity</a>
           </div>
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav navbar-right">
-              <li><AccountsUIWrapper/></li>
+              <li><a href="#buscarGraffitis">BUSCAR GRAFFITIS</a></li>
               <li><a href="#sobreNosotros">SOBRE NOSOTROS</a></li>
+              <li><AccountsUIWrapper/></li>
               <li><a href="#contactenos">CONTACTENOS</a></li>
             </ul>
           </div>
@@ -128,13 +129,15 @@ class App extends Component {
           </header> : ''}
         </div>
       {this.props.currentUser && <h3>Tus Graffitis</h3> }
-      {!this.props.currentUser && <h3>Ingresa para empezar a agregar graffitis!</h3> }
+      {!this.props.currentUser && <h3>Ingresa en <em>Sign in</em> en la esquina superior derecha para empezar a agregar graffitis!</h3> }
       <ul>
         {this.renderGraffitis()}
       </ul>
       <br/>
       <br/>
-      <div className="container-fluid bg-grey">
+      <div id="buscarGraffitis" className="container-fluid bg-grey">
+        <h2>BUSCAR GRAFFITIS</h2>
+        <br></br>
         <Mapa onMarker={ (latitude,longitude) => this.changeLatLng(latitude,longitude) } ></Mapa>
       </div>
       <br></br>
