@@ -97,10 +97,10 @@ class App extends Component {
           </div>
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav navbar-right">
-              <li><a href="#buscarGraffitis">BUSCAR GRAFFITIS</a></li>
-              <li><a href="#sobreNosotros">SOBRE NOSOTROS</a></li>
               <li><AccountsUIWrapper/></li>
-              <li><a href="#contactenos">CONTACTENOS</a></li>
+              <li><a href="#buscarGraffitis">BUSCAR GRAFFITIS</a></li>
+              {!this.props.currentUser && <li><a href="#sobreNosotros">SOBRE NOSOTROS</a></li> }
+              {!this.props.currentUser && <li><a href="#contactenos">CONTACTENOS</a></li> }
             </ul>
           </div>
         </div>
