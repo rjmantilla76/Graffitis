@@ -85,6 +85,10 @@ class App extends Component {
   render() {
     return (
     <div className="App">
+      <div class="jumbotron text-center">
+        <h1>GraffitisCity</h1>
+        <p>Búscalos por todo Bogotá</p>
+      </div>
       <AccountsUIWrapper />
       <br/>
         <div className="container">
