@@ -85,24 +85,45 @@ class App extends Component {
   render() {
     return (
     <div className="App">
-      <div class="jumbotron text-center">
+      <nav className="navbar navbar-default navbar-fixed-top">
+        <div className="container">
+          <div className="navbar-header">
+            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+            </button>
+            <a id="logoPS" className="navbar-brand" href="#miPagina">GraffitisCity</a>
+          </div>
+          <div className="collapse navbar-collapse" id="myNavbar">
+            <ul className="nav navbar-nav navbar-right">
+              <li><AccountsUIWrapper/></li>
+              <li><a href="#sobreNosotros">SOBRE NOSOTROS</a></li>
+              <li><a href="#contactenos">CONTACTENOS</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      {!this.props.currentUser && <div className="jumbotron text-center">
         <h1>GraffitisCity</h1>
         <p>Búscalos por todo Bogotá</p>
-      </div>
-      <AccountsUIWrapper />
+      </div> }
+
       <br/>
         <div className="container">
           { this.props.currentUser ?
           <header>
             <h2>Agrega un nuevo graffiti</h2>
-              <form className="new-graffiti" id= "formGraffiti" onSubmit={this.handleSubmit.bind(this)} >
-                <input type="text" ref="textName" placeholder="Nombre"/>
-                <div>
+              <form className="new-graffiti pure-form" id= "formGraffiti" onSubmit={this.handleSubmit.bind(this)} >
+                <fieldset>
+                  <legend>Nuevo graffiti</legend>
+                  <input type="text" ref="textName" placeholder="Nombre"/>
                   <input type="text" ref="imgFileName" name="cloudinaryFileName" placeholder={this.state.fileName} readOnly/>
                   <input type="hidden" ref ="imgURL" name="cloudinaryUrl" disabled="true"/>
                   <button id="cloudinary-upload-widget" onClick={this.handleCloudinary.bind(this)}>Subir Imagen </button>
-                  <button id="submit" >Agregar Graffiti </button>
-                </div>
+                  <button id="submit" type="submit">Agregar Graffiti </button>
+                </fieldset>
               </form>
           </header> : ''}
         </div>
@@ -114,6 +135,7 @@ class App extends Component {
       <br/>
       <br/>
       <Mapa onMarker={ (latitude,longitude) => this.changeLatLng(latitude,longitude) } ></Mapa>
+      {!this.props.currentUser && <h2>SOBRE NOSOTROS</h2> }
     </div>
     );
   }
