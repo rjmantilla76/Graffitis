@@ -20,7 +20,7 @@ footer {
 }
 
 #login-buttons a, .accounts-dialog a {
-  color: #ffffff;
+  color: #333;
 }
 
 #submit {
@@ -62,10 +62,6 @@ footer {
     border-radius: 0;
 }
 
-.navbar li a, .navbar .navbar-brand {
-    color: #fff !important;
-}
-
 .navbar-nav li a:hover, .navbar-nav li.active a {
     color: #f4511e !important;
     background-color: #fff !important;
@@ -90,7 +86,7 @@ footer {
     padding: 60px 50px;
 }
 
-.jumbotron h1, p {
+.jumbotron h1 {
   color: #fff;
 }
 
