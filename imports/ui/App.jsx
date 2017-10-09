@@ -45,7 +45,6 @@ class App extends Component {
 
 
 // tags
-
   handleDelete (i) {
    const tags = this.state.tags.slice(0)
    tags.splice(i, 1)
@@ -156,7 +155,7 @@ class App extends Component {
         <p id="textJumbotronUsuario">Bienvenido {Meteor.user().username}</p>
       </div> }
 
-      {!this.props.currentUser && <h3>Ingresa en <em>Sign in</em> en la esquina superior derecha para empezar a agregar graffitis!</h3> }
+      {!this.props.currentUser && <h3>Ingresa en <em>Sign in</em> para empezar a agregar graffitis!</h3> }
 
       {this.props.currentUser && <div id="misGraffitis" className="container-fluid"><h2>Mis Graffitis</h2><br></br><ul className="list-inline">{this.renderGraffitis()}</ul></div>}
 
