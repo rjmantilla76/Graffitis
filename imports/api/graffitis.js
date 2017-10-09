@@ -12,7 +12,7 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  'graffitis.insert'(name,latitude,longitude,fileURL) {
+  'graffitis.insert'(name,latitude,longitude,fileURL,tags) {
     check(name, String);
 
     // Revisar que el usuario esté logeado
@@ -30,7 +30,7 @@ Meteor.methods({
       username: Meteor.user().username,
       latitude,
       longitude,
-      fileURL
+      fileURL,tags
     });
   },
   'graffitis.remove'(graffitiId) {

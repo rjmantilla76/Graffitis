@@ -50,21 +50,22 @@ class App extends Component {
    const tags = this.state.tags.slice(0)
    tags.splice(i, 1)
    this.setState({ tags })
+   console.log(this.state.tags);
  }
 
  handleAddition (tag) {
    const tags = [].concat(this.state.tags, tag)
    this.setState({ tags })
+   console.log(this.state.tags);
  }
-
 
 
    handleSubmit(event) {
      event.preventDefault();
      const name = ReactDOM.findDOMNode(this.refs.textName).value.trim();
-     Meteor.call('graffitis.insert', name, this.state.lat, this.state.lng, this.state.fileURL);
+     Meteor.call('graffitis.insert', name, this.state.lat, this.state.lng, this.state.fileURL, this.state.tags);
      ReactDOM.findDOMNode(this.refs.textName).value = "";
-     ReactDOM.findDOMNode(this.refs.imgFileName).value = "";
+     ReactDOM.findDOMNode(this.refs.txtFileName).value = "";
    }
 
    handleCloudinary(event){
@@ -89,7 +90,7 @@ class App extends Component {
 
          const fileName = result[0].original_filename;
          const url = result[0].url;
-         console.log(fileName,url);
+         //console.log(fileName,url);
          this.changeFileURL(fileName,url);
       });
    }
@@ -187,7 +188,7 @@ class App extends Component {
                     <div className="form-group">
                       <label className="control-label col-sm-2">Imagen:</label>
                       <div className="col-sm-10">
-                        <input type="text" ref="imgFileName" name="cloudinaryFileName" placeholder={this.state.fileName} readOnly/>
+                        <input type="text" ref="txtFileName" name="cloudinaryFileName" placeholder={this.state.fileName} readOnly/>
                         <input type="hidden" ref ="imgURL" name="cloudinaryUrl" disabled="true"/>
                         <button id="cloudinary-upload-widget" onClick={this.handleCloudinary.bind(this)}>Subir Imagen </button>
                       </div>
