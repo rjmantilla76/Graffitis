@@ -9,6 +9,8 @@ import { Graffitis } from "../api/graffitis.js";
 import  Graffiti  from "./Graffiti.jsx";
 import  Mapa  from "./Mapa.jsx";
 
+const ReactTags = require('react-tag-autocomplete')
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,8 +20,44 @@ class App extends Component {
       lng: -74.062529,
       fileName: "Sube una imagen",
       fileURL: "",
+      delimiters: [9,32,13],
+      tags: [
+        { id: 1, name: "Política" },
+        { id: 2, name: "Arte" },
+
+      ],
+      suggestions: [
+        { id: 4, name: "Religion" },
+        { id: 5, name: "Amor" },
+        { id: 6, name: "Feminismo" },
+        { id: 7, name: "Música" },
+        { id: 8, name: "Humor" },
+        { id: 9, name: "Drogas" },
+        { id: 10, name: "Wildstyle" },
+        { id: 11, name: "Stencil" },
+        { id: 12, name: "Poster" },
+        { id: 13, name: "Sticker" },
+        { id: 14, name: "Política" },
+        { id: 15, name: "Arte" }
+      ]
     };
   }
+
+
+// tags
+
+  handleDelete (i) {
+   const tags = this.state.tags.slice(0)
+   tags.splice(i, 1)
+   this.setState({ tags })
+ }
+
+ handleAddition (tag) {
+   const tags = [].concat(this.state.tags, tag)
+   this.setState({ tags })
+ }
+
+
 
    handleSubmit(event) {
      event.preventDefault();
@@ -37,6 +75,7 @@ class App extends Component {
          upload_preset: 'xo0iva0a',
          sources: ['local', 'url', 'camera'],
          max_file_size: '500000',
+         cropping: 'server'
         //  max_image_width: '500',
         //  max_image_height: '500',
         //  min_image_width: '300',
@@ -115,7 +154,7 @@ class App extends Component {
 
       {this.props.currentUser && <div className="jumbotron text-center">
         <h1 id="titulo">GraffitisCity</h1>
-        <p id="textJumbotronUsuario">Bienvenido usuario</p>
+        <p id="textJumbotronUsuario">Bienvenido {Meteor.user().username}</p>
       </div> }
 
       {!this.props.currentUser && <h3>Ingresa en <em>Sign in</em> en la esquina superior derecha para empezar a agregar graffitis!</h3> }
@@ -127,7 +166,7 @@ class App extends Component {
         {this.props.currentUser && <br></br>}
         {this.props.currentUser && <p>Para agregar un graffiti:</p>}
         {this.props.currentUser && <br></br>}
-        {this.props.currentUser && <ol><li>Dale click en el mapa donde se ubica el graffiti</li><li>Ingresa el nombre del graffiti en el formulario</li><li>Sube una foto del graffiti</li><li>Oprime Agregar Graffiti</li></ol>}
+        {this.props.currentUser && <ol><li>Dale click en el mapa donde quieres agregarlo</li><li>Ingresa el nombre del graffiti en el formulario</li><li>Sube una foto del graffiti</li><li>Oprime Agregar Graffiti</li></ol>}
         {this.props.currentUser && <br></br>}
 
         {!this.props.currentUser && <h2>BUSCAR GRAFFITIS</h2>}
@@ -154,6 +193,13 @@ class App extends Component {
                       </div>
                     </div>
                     <div className="form-group">
+                      <label className="control-label col-sm-2">Tags:</label>
+                      <div className="col-sm-10">
+                        <ReactTags tags={this.state.tags} suggestions={this.state.suggestions} delimiters={this.state.delimiters} handleDelete={this.handleDelete.bind(this)}
+                          handleAddition={this.handleAddition.bind(this)} placeholder ='Agrega un Tag' minQueryLength={1} allowNew = {true} />
+                      </div>
+                      <br></br>
+                      <br></br>
                       <div className="col-sm-offset-2 col-sm-10">
                         <button type="submit" id="submit" className="btn btn-default">Agregar Graffiti</button>
                       </div>

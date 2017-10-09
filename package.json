@@ -12,6 +12,7 @@
     "react": "^15.6.2",
     "react-addons-pure-render-mixin": "^15.6.2",
     "react-dom": "^15.6.2",
+    "react-tag-autocomplete": "^5.4.1",
     "uniforms": "^1.21.0",
     "uniforms-semantic": "^1.21.0"
   },

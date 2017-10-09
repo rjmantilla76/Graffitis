@@ -41,8 +41,8 @@ export default class Mapa extends Component {
 
             var contentString =
             '<div id="content">'+
-            '<img src='+ document.fileURL+' width=200 height=200> </img>'+
-            '<p>Nombre Graffiti: '+ document.name + '</p>'+
+            '<img src='+ document.fileURL+' width=200 height=200> </img> <br/>'+
+            '<br/><p>Nombre Graffiti: '+ document.name + '</p>'+
             '<p>Creado por: '+ document.username + '</p>'+
             '<p>Fecha: '+ document.createdAt + '</p>'+
             '</div>';
