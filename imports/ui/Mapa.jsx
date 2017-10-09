@@ -43,10 +43,10 @@ export default class Mapa extends Component {
             var contentString =
             '<div id="content">'+
             '<img src='+ document.fileURL+' width=250 height=250> </img> <br/>'+
-            '<br/><p>Nombre Graffiti: '+ document.name + '</p>'+
-            '<p>Tags: '+ document.tags.map(tag => tag.name) + '</p>'+
-            '<p>Creado por: '+ document.username + '</p>'+
-            '<p>Fecha: '+ document.createdAt + '</p>'+
+            '<br/><p><strong>Nombre Graffiti:</strong> '+ document.name + '</p>'+
+            '<p><strong>Tags:</strong> '+ document.tags.map(tag => " "+tag.name) + '</p>'+
+            '<p><strong>Creado por:</strong> '+ document.username + '</p>'+
+            '<p><strong>Fecha:</strong> '+ document.createdAt + '</p>'+
             '</div>';
 
         var infowindow = new google.maps.InfoWindow({
