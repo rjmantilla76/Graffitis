@@ -37,6 +37,7 @@ export default class Mapa extends Component {
               animation: google.maps.Animation.DROP,
               position: new google.maps.LatLng(document.latitude, document.longitude),
               map: map.instance,
+              icon: 'https://raw.githubusercontent.com/vek/Graffitis/master/images/paint-spray.png',
               id: document._id,
             });
 
