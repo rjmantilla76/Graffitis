@@ -18,6 +18,7 @@ export default class Mapa extends Component {
     };
   }
 
+
   handleOnReady(name) {
     GoogleMaps.ready(name, map => {
       Tracker.autorun(c => {
@@ -86,7 +87,7 @@ export default class Mapa extends Component {
   }
 
   render() {
-    //console.log("props del render: "+this.props);
+
     return (
       <GoogleMap
         onReady={this.handleOnReady}

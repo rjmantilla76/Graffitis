@@ -5,7 +5,9 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 class GoogleMap extends React.Component {
   componentDidMount() {
-    GoogleMaps.load(this.props.options || {});
+    const options = this.props.options || {};
+    options.key = 'AIzaSyDOsS_yrWNqwmmdES2x3iCDApO7_v24-1I';
+    GoogleMaps.load(options);
     this.forceUpdate();
   }
 
