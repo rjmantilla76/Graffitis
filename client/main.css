@@ -23,6 +23,27 @@ footer {
   color: #ffffff;
 }
 
+#submit {
+  background-color: #f4511e;
+  color: #fff;
+}
+
+#formGraffiti {
+  border: 2px solid #f4511e;
+  border-radius: 12px;
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+#agregarGraffiti {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#misGraffitis {
+  padding-top: 0;
+}
+
 .map-container {
   width: 800px;
   max-width: 100%;
@@ -75,4 +96,8 @@ footer {
 
 .bg-grey {
     background-color: #f6f6f6;
+}
+
+div.jumbotron.text-center {
+  margin-bottom: 0;
 }

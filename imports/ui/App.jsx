@@ -16,7 +16,7 @@ class App extends Component {
     this.state = {
       lat: 4.603755,
       lng: -74.062529,
-      fileName: "Por favor agrega una imagen",
+      fileName: "Sube una imagen",
       fileURL: "",
     };
   }
@@ -98,6 +98,8 @@ class App extends Component {
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav navbar-right">
               <li><AccountsUIWrapper/></li>
+              {this.props.currentUser && <li><a href="#agregarGraffiti">AGREGAR GRAFFITI</a></li>}
+              {this.props.currentUser && <li><a href="#misGraffitis">MIS GRAFFITIS</a></li>}
               <li><a href="#buscarGraffitis">BUSCAR GRAFFITIS</a></li>
               {!this.props.currentUser && <li><a href="#sobreNosotros">SOBRE NOSOTROS</a></li> }
               {!this.props.currentUser && <li><a href="#contactenos">CONTACTENOS</a></li> }
@@ -111,24 +113,44 @@ class App extends Component {
         <p>Búscalos por todo Bogotá</p>
       </div> }
 
+      {this.props.currentUser && <div className="jumbotron text-center">
+        <h1 id="titulo">GraffitisCity</h1>
+        <p>Bienvenido usuario</p>
+      </div> }
+
       <br/>
-        <div className="container">
+        <div id="agregarGraffiti" className="container">
           { this.props.currentUser ?
           <header>
-            <h2>Agrega un nuevo graffiti</h2>
-              <form className="new-graffiti pure-form" id= "formGraffiti" onSubmit={this.handleSubmit.bind(this)} >
-                <fieldset>
-                  <legend>Nuevo graffiti</legend>
-                  <input type="text" ref="textName" placeholder="Nombre"/>
-                  <input type="text" ref="imgFileName" name="cloudinaryFileName" placeholder={this.state.fileName} readOnly/>
-                  <input type="hidden" ref ="imgURL" name="cloudinaryUrl" disabled="true"/>
-                  <button id="cloudinary-upload-widget" onClick={this.handleCloudinary.bind(this)}>Subir Imagen </button>
-                  <button id="submit" type="submit">Agregar Graffiti </button>
-                </fieldset>
-              </form>
+            <div className="container-fluid">
+              <h3>Agrega un nuevo graffiti</h3>
+                <br></br>
+                  <form id= "formGraffiti" className="new-graffiti form-horizontal"  onSubmit={this.handleSubmit.bind(this)} >
+                    <div className="form-group">
+                      <label className="control-label col-sm-2">Nombre:</label>
+                      <div className="col-sm-10">
+                        <input type="text" className="form-control" ref="textName" placeholder="Nombre"/>
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label className="control-label col-sm-2">Imagen:</label>
+                      <div className="col-sm-10">
+                        <input type="text" ref="imgFileName" name="cloudinaryFileName" placeholder={this.state.fileName} readOnly/>
+                        <input type="hidden" ref ="imgURL" name="cloudinaryUrl" disabled="true"/>
+                        <button id="cloudinary-upload-widget" onClick={this.handleCloudinary.bind(this)}>Subir Imagen </button>
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <div className="col-sm-offset-2 col-sm-10">
+                        <button type="submit" id="submit" className="btn btn-default">Agregar Graffiti</button>
+                      </div>
+                    </div>
+                  </form>
+            </div>
           </header> : ''}
         </div>
-      {this.props.currentUser && <h3>Tus Graffitis</h3> }
+      {this.props.currentUser && <div id="misGraffitis" className="container"><div className="container-fluid"><h3>Mis Graffitis</h3></div></div>}
+      {this.props.currentUser && <br></br>}
       {!this.props.currentUser && <h3>Ingresa en <em>Sign in</em> en la esquina superior derecha para empezar a agregar graffitis!</h3> }
       <ul>
         {this.renderGraffitis()}
