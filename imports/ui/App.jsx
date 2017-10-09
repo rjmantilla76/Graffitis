@@ -167,6 +167,7 @@ class App extends Component {
         <Mapa onMarker={ (latitude,longitude) => this.changeLatLng(latitude,longitude) } ></Mapa>
         {this.props.currentUser && <br/> &&
           <div  className="text-center alert alert-dismissible alert-warning">
+            <button type="button" className="close" data-dismiss="alert">&times;</button>
             <strong>Para Agregar un Graffiti: </strong> <br/> Dale click al mapa donde quieres agregarlo, luego llena el formulario.
           </div> }
       </div>
