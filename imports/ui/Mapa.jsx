@@ -14,7 +14,7 @@ export default class Mapa extends Component {
   handleMapOptions() {
     return {
       center: new google.maps.LatLng(4.603755, -74.062529),
-      zoom: 14,
+      zoom: 16,
     };
   }
 

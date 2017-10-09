@@ -159,18 +159,16 @@ class App extends Component {
 
       {this.props.currentUser && <div id="misGraffitis" className="container-fluid"><h2>Mis Graffitis</h2><br></br><ul className="list-inline">{this.renderGraffitis()}</ul></div>}
 
-      <div id="buscarGraffitis" className="container-fluid bg-grey">
+      <div id="buscarGraffitis" className="container bg-grey">
         {this.props.currentUser && <h2>Agrega un graffiti</h2>}
-        {this.props.currentUser && <br></br>}
-        {this.props.currentUser && <p>Para agregar un graffiti:</p>}
-        {this.props.currentUser && <br></br>}
-        {this.props.currentUser && <ol><li>Dale click en el mapa donde quieres agregarlo</li>
-          <li>Ingresa el nombre del graffiti en el formulario</li><li>Sube una foto del graffiti</li><li>Oprime Agregar Graffiti</li></ol>}
-        {this.props.currentUser && <br></br>}
 
-        {!this.props.currentUser && <h2>MAPA GRAFFITIS</h2>}
+       {!this.props.currentUser && <h2>MAPA GRAFFITIS</h2>}
         <br></br>
         <Mapa onMarker={ (latitude,longitude) => this.changeLatLng(latitude,longitude) } ></Mapa>
+        {this.props.currentUser && <br/> &&
+          <div  className="text-center alert alert-dismissible alert-warning">
+            <strong>Para Agregar un Graffiti: </strong> <br/> Dale click al mapa donde quieres agregarlo, luego llena el formulario.
+          </div> }
       </div>
 
           { this.props.currentUser ?
