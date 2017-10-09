@@ -98,8 +98,8 @@ class App extends Component {
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav navbar-right">
               <li><AccountsUIWrapper/></li>
-              {this.props.currentUser && <li><a href="#agregarGraffiti">AGREGAR GRAFFITI</a></li>}
               {this.props.currentUser && <li><a href="#misGraffitis">MIS GRAFFITIS</a></li>}
+              {this.props.currentUser && <li><a href="#agregarGraffiti">AGREGAR GRAFFITI</a></li>}
               <li><a href="#buscarGraffitis">BUSCAR GRAFFITIS</a></li>
               {!this.props.currentUser && <li><a href="#sobreNosotros">SOBRE NOSOTROS</a></li> }
               {!this.props.currentUser && <li><a href="#contactenos">CONTACTENOS</a></li> }
@@ -110,21 +110,34 @@ class App extends Component {
 
       {!this.props.currentUser && <div className="jumbotron text-center">
         <h1 id="titulo">GraffitisCity</h1>
-        <p>Búscalos por todo Bogotá</p>
+        <p id="textJumbotron">Búscalos por todo Bogotá</p>
       </div> }
 
       {this.props.currentUser && <div className="jumbotron text-center">
         <h1 id="titulo">GraffitisCity</h1>
-        <p>Bienvenido usuario</p>
+        <p id="textJumbotronUsuario">Bienvenido usuario</p>
       </div> }
 
-      <br/>
-        <div id="agregarGraffiti" className="container">
+      {!this.props.currentUser && <h3>Ingresa en <em>Sign in</em> en la esquina superior derecha para empezar a agregar graffitis!</h3> }
+
+      {this.props.currentUser && <div id="misGraffitis" className="container-fluid"><h2>Mis Graffitis</h2><br></br><ul>{this.renderGraffitis()}</ul></div>}
+
+      <div id="buscarGraffitis" className="container-fluid bg-grey">
+        {this.props.currentUser && <h2>Agrega un graffiti</h2>}
+        {this.props.currentUser && <br></br>}
+        {this.props.currentUser && <p>Para agregar un graffiti:</p>}
+        {this.props.currentUser && <br></br>}
+        {this.props.currentUser && <ol><li>Dale click en el mapa donde se ubica el graffiti</li><li>Ingresa el nombre del graffiti en el formulario</li><li>Sube una foto del graffiti</li><li>Oprime Agregar Graffiti</li></ol>}
+        {this.props.currentUser && <br></br>}
+
+        {!this.props.currentUser && <h2>BUSCAR GRAFFITIS</h2>}
+        <br></br>
+        <Mapa onMarker={ (latitude,longitude) => this.changeLatLng(latitude,longitude) } ></Mapa>
+      </div>
+
           { this.props.currentUser ?
           <header>
-            <div className="container-fluid">
-              <h3>Agrega un nuevo graffiti</h3>
-                <br></br>
+            <div id="agregarGraffiti" className="container-fluid bg-grey">
                   <form id= "formGraffiti" className="new-graffiti form-horizontal"  onSubmit={this.handleSubmit.bind(this)} >
                     <div className="form-group">
                       <label className="control-label col-sm-2">Nombre:</label>
@@ -148,21 +161,7 @@ class App extends Component {
                   </form>
             </div>
           </header> : ''}
-        </div>
-      {this.props.currentUser && <div id="misGraffitis" className="container"><div className="container-fluid"><h3>Mis Graffitis</h3></div></div>}
-      {this.props.currentUser && <br></br>}
-      {!this.props.currentUser && <h3>Ingresa en <em>Sign in</em> en la esquina superior derecha para empezar a agregar graffitis!</h3> }
-      <ul>
-        {this.renderGraffitis()}
-      </ul>
-      <br/>
-      <br/>
-      <div id="buscarGraffitis" className="container-fluid bg-grey">
-        <h2>BUSCAR GRAFFITIS</h2>
-        <br></br>
-        <Mapa onMarker={ (latitude,longitude) => this.changeLatLng(latitude,longitude) } ></Mapa>
-      </div>
-      <br></br>
+
       {!this.props.currentUser && <div id="sobreNosotros" className="container-fluid"><h2>SOBRE NOSOTROS</h2><br></br>
       <p id="textoSobreNosotros">GraffitisCity es un proyecto que busca que las personas conozcan graffitis artísticos en todo Bogotá.</p></div>}
       {!this.props.currentUser && <div id="contactenos" className="container-fluid bg-grey"><h2>CONTACTENOS</h2><br></br>
