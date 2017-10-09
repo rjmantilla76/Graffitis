@@ -22,9 +22,9 @@ class App extends Component {
       fileURL: "",
       delimiters: [9,32,13],
       tags: [
-        { id: 1, name: "Política" },
-        { id: 2, name: "Arte" },
-
+        { id: 1, name: "Stencil" },
+        { id: 2, name: "Street-Art" },
+        { id: 3, name: "Política" }
       ],
       suggestions: [
         { id: 4, name: "Religion" },
@@ -50,13 +50,11 @@ class App extends Component {
    const tags = this.state.tags.slice(0)
    tags.splice(i, 1)
    this.setState({ tags })
-   console.log(this.state.tags);
  }
 
  handleAddition (tag) {
    const tags = [].concat(this.state.tags, tag)
    this.setState({ tags })
-   console.log(this.state.tags);
  }
 
 
@@ -75,7 +73,7 @@ class App extends Component {
          cloud_name: 'diqqlncv0',
          upload_preset: 'xo0iva0a',
          sources: ['local', 'url', 'camera'],
-         max_file_size: '500000',
+         max_file_size: '5000000',
          cropping: 'server'
         //  max_image_width: '500',
         //  max_image_height: '500',
@@ -167,10 +165,11 @@ class App extends Component {
         {this.props.currentUser && <br></br>}
         {this.props.currentUser && <p>Para agregar un graffiti:</p>}
         {this.props.currentUser && <br></br>}
-        {this.props.currentUser && <ol><li>Dale click en el mapa donde quieres agregarlo</li><li>Ingresa el nombre del graffiti en el formulario</li><li>Sube una foto del graffiti</li><li>Oprime Agregar Graffiti</li></ol>}
+        {this.props.currentUser && <ol><li>Dale click en el mapa donde quieres agregarlo</li>
+          <li>Ingresa el nombre del graffiti en el formulario</li><li>Sube una foto del graffiti</li><li>Oprime Agregar Graffiti</li></ol>}
         {this.props.currentUser && <br></br>}
 
-        {!this.props.currentUser && <h2>BUSCAR GRAFFITIS</h2>}
+        {!this.props.currentUser && <h2>MAPA GRAFFITIS</h2>}
         <br></br>
         <Mapa onMarker={ (latitude,longitude) => this.changeLatLng(latitude,longitude) } ></Mapa>
       </div>
@@ -199,9 +198,10 @@ class App extends Component {
                         <ReactTags tags={this.state.tags} suggestions={this.state.suggestions} delimiters={this.state.delimiters} handleDelete={this.handleDelete.bind(this)}
                           handleAddition={this.handleAddition.bind(this)} placeholder ='Agrega un Tag' minQueryLength={1} allowNew = {true} />
                       </div>
-                      <br></br>
-                      <br></br>
+                      <br/>
+                      <br/>
                       <div className="col-sm-offset-2 col-sm-10">
+                        <br/>
                         <button type="submit" id="submit" className="btn btn-default">Agregar Graffiti</button>
                       </div>
                     </div>
@@ -210,9 +210,9 @@ class App extends Component {
           </header> : ''}
 
       {!this.props.currentUser && <div id="sobreNosotros" className="container-fluid"><h2>SOBRE NOSOTROS</h2><br></br>
-      <p id="textoSobreNosotros">GraffitisCity es un proyecto que busca que las personas conozcan graffitis artísticos en todo Bogotá.</p></div>}
+      <p id="textoSobreNosotros">GraffitisCity es un proyecto que busca que las personas conozcan graffitis en todo Bogotá.</p></div>}
       {!this.props.currentUser && <div id="contactenos" className="container-fluid bg-grey"><h2>CONTACTENOS</h2><br></br>
-      <p id="textoSobreNosotros">Somos 2 estudiantes de Ingeniería de Sistemas y Computación. Escríbenos a email</p></div>}
+      <p id="textoSobreNosotros">Somos 2 estudiantes de Ingeniería de Sistemas y Computación. Escríbenos a graffitisCity@gmail.com</p></div>}
     </div>
     );
   }

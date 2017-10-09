@@ -14,14 +14,21 @@ export default class Graffiti extends Component {
     // console.log("owner: "+this.props.graffiti.owner)
     // console.log("current user: "+this.props.currentUser._id)
     return (
-      <li>
-          <button className="delete" onClick={this.deleteThisGraffiti.bind(this)}>
-            &times;
-          </button>
-      <span className="name">
-        <strong>Usuario: {this.props.graffiti.username}</strong> -  Nombre: {this.props.graffiti.name}
-      </span>
-      </li>
+
+      <div className="panel panel-primary">
+        <div className="panel-heading">
+          <h3 className="panel-title"><strong>Nombre: {this.props.graffiti.name}</strong> </h3>
+        </div>
+        <div className="panel-body">
+          <img src= {this.props.graffiti.fileURL} width="200" height="200"/><br/><br/>
+          <strong>Tags:</strong> {this.props.graffiti.tags.map(tag => tag.name+"  ")}<br/>
+          <strong>Fecha:</strong> {this.props.graffiti.createdAt}<br/>
+          <p><br/><button className="btn btn-primary btn-sm" onClick={this.deleteThisGraffiti.bind(this)}>
+          Borrar
+        </button></p>
+        </div>
+      </div>
+
     );
   }
 }
