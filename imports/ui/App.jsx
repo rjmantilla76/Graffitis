@@ -158,7 +158,7 @@ class App extends Component {
 
       {!this.props.currentUser && <h3>Ingresa en <em>Sign in</em> en la esquina superior derecha para empezar a agregar graffitis!</h3> }
 
-      {this.props.currentUser && <div id="misGraffitis" className="container-fluid"><h2>Mis Graffitis</h2><br></br><ul>{this.renderGraffitis()}</ul></div>}
+      {this.props.currentUser && <div id="misGraffitis" className="container-fluid"><h2>Mis Graffitis</h2><br></br><ul className="list-inline">{this.renderGraffitis()}</ul></div>}
 
       <div id="buscarGraffitis" className="container-fluid bg-grey">
         {this.props.currentUser && <h2>Agrega un graffiti</h2>}

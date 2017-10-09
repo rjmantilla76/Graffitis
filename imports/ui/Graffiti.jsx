@@ -14,7 +14,7 @@ export default class Graffiti extends Component {
     // console.log("owner: "+this.props.graffiti.owner)
     // console.log("current user: "+this.props.currentUser._id)
     return (
-
+      <li>
       <div className="panel panel-primary">
         <div className="panel-heading">
           <h3 className="panel-title"><strong>Nombre: {this.props.graffiti.name}</strong> </h3>
@@ -28,7 +28,7 @@ export default class Graffiti extends Component {
         </button></p>
         </div>
       </div>
-
+    </li>
     );
   }
 }
