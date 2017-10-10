@@ -15,6 +15,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.changeLatLng = this.changeLatLng.bind(this);
+    // Considerar meter estos valores en un archivo a parte de tal
+    // forma que sea fácil extenderlo a otros idiomas y modificar/agregar valores predeterminados
     this.state = {
       lat: 4.603755,
       lng: -74.062529,
@@ -59,6 +61,7 @@ class App extends Component {
 
    handleSubmit(event) {
      event.preventDefault();
+     // Usar ref para no tener que accesar directamente a ReactDOM
      const name = ReactDOM.findDOMNode(this.refs.textName).value.trim();
      Meteor.call('graffitis.insert', name, this.state.lat, this.state.lng, this.state.fileURL, this.state.tags);
      ReactDOM.findDOMNode(this.refs.textName).value = "";
@@ -120,6 +123,8 @@ class App extends Component {
    }
 
   render() {
+    //Este método está demasiado largo lo cual lo hace difícil de editar
+    //Considera partirlo en submétodos con significado semántico
     return (
     <div className="App">
       <nav className="navbar navbar-default navbar-fixed-top">
