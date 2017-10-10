@@ -6,6 +6,9 @@ import { Graffitis } from "../api/graffitis.js";
 
 export default class Graffiti extends Component {
 
+  constructor(props){
+    this.deleteThisGraffiti = this.deleteThisGraffiti.bind(this);
+  }
   deleteThisGraffiti() {
      Meteor.call('graffitis.remove', this.props.graffiti._id);
   }
@@ -23,7 +26,7 @@ export default class Graffiti extends Component {
           <img src= {this.props.graffiti.fileURL} width="200" height="200"/><br/><br/>
           <strong>Tags:</strong> {this.props.graffiti.tags.map(tag => tag.name+"  ")}<br/>
           <strong>Fecha:</strong> {this.props.graffiti.createdAt}<br/>
-          <p><br/><button className="btn btn-primary btn-sm" onClick={this.deleteThisGraffiti.bind(this)}>
+          <p><br/><button className="btn btn-primary btn-sm" onClick={() => this.deleteThisGraffiti()}>
           Borrar
         </button></p>
         </div>
